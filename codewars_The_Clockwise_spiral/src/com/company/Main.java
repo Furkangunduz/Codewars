@@ -7,43 +7,44 @@ public class Main {
     }
 
     public static int[][] createSpiral(int N) {
-        if(N<1)
-            return new int[0][0];
-
-        int n = N*2;
-        int m = 1;
         int[][] res = new int[N][N];
 
-        int top = 0; int left = 0;
-        int bottom = N-1; int right = N-1;
+        int top = 0;int left = 0;
+        int right =  N-1; int bottom = N-1;
 
+        int num = 1;
 
-        while(true) {
-            for (int i = left; i <= right; i++) {
-                res[top][i] = m++;
+        while(true){
+            for(int i = left; i<=right;i++){
+                res[top][i] = num++;
             }
             top++;
-            if(top>bottom) break;
 
-            for (int i = top; i <= bottom; i++) {
-                res[i][right] = m++;
+            if(top> bottom) break;
+
+
+            for(int i = top; i<=bottom;i++){
+                res[i][right] = num++;
             }
             right--;
-            if(left>right) break;
 
+            if(left> right) break;
 
-            for (int i =right; i >= left; i--) {
-                res[bottom][i] = m++;
+            for(int i = right; i>=left; i--){
+                res[bottom][i]=num++;
             }
             bottom--;
+
             if(top>bottom) break;
 
-            for (int i = bottom; i >= top; i--) {
-                res[i][left] = m++;
+            for(int i = bottom; i>=top; i--){
+                res[i][left] = num++;
             }
             left++;
+
             if(left>right) break;
+
         }
-    return res;
+        return res;
     }
 }
